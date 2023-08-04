@@ -8,7 +8,7 @@ This contract is using the MIT License.
 
 ## Prerequisites
 
-- Solidity ^0.8.17
+- Solidity ^0.8.18
 
 ## Contract Details
 
