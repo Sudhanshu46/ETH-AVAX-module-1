@@ -1,29 +1,25 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.17;
+pragma solidity ^0.8.18;
 
-contract DVD {
-
-    // uint public num = 0;
-    uint y=2;
-
-    function divide(uint _num, uint _deno) public pure returns (uint){
-        if(_num<_deno){
-
-            revert("please provide numbers which in which numerator greater than denomenator");
-            
+contract bank {
+    uint public balance=0;
+    string yes="Yes";
+    function addBalance(uint x) public returns (uint){
+        require(x>0,"need some balance");
+        balance += x;
+        return balance;
+    }
+    function withdraw(uint amount) public returns (uint){
+        assert(amount!=0);
+        balance -= amount;
+        return balance;
+    }
+    function withdrawable(uint amount)public view  returns (string memory){
+         if(balance<amount){
+            revert("Requested amount can not be credited, request amount is greater than balance available");
         }
-        return _num/_deno;
-
+        return yes;
     }
 
-    function testAssert(uint num) public pure{
-        assert(num!=0);
-    }
-
-    function mult(uint x) public view returns (uint){
-        require(x>0,"Value of x is zero , we don't want the result to be zero");
-        return x*y;
-
-    }
 
 }
